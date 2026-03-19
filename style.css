@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #0A0A0A;
+  color: #F2F2F2;
+  overflow-x: hidden;
+}
+
+/* NAVIGATION */
+nav {
+  background: #111;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #D6B36A;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: #D6B36A;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  background: linear-gradient(-45deg, #0A0A0A, #111111, #0A0A0A, #111111);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+.hero-left {
+  width: 40%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+}
+
+.hero-right {
+  width: 60%;
+  background: url('image.jpg') no-repeat center;
+  background-size: cover;
+  transform: scale(1);
+  animation: imageZoom 1.5s forwards;
+}
+
+.bouler-title {
+  font-size: 48px;
+  background: linear-gradient(90deg, #D6B36A, #B8964A, #8A6A2F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline, .desc {
+  opacity: 0;
+  animation: fadeIn 2s forwards 1s;
+}
+
+/* COLLECTION, ABOUT, CONTACT sections */
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.collection-items {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.collection-items .item {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid #B8964A;
+  padding: 20px;
+  font-size: 18px;
+  min-width: 150px;
+  transition: all 0.3s ease;
+}
+
+.collection-items .item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px #B8964A;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes imageZoom { from { transform: scale(1.05); } to { transform: scale(1); } }
+@keyframes gradientBG { 0% {background-position:0% 50%;} 50% {background-position:100% 50%;} 100% {background-position:0% 50%;} }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  .nav-links { display: none; flex-direction: column; gap: 15px; margin-top: 10px; }
+  .nav-links.active { display: flex; }
+  nav a { margin-left: 0; }
+  .hero { flex-direction: column; height: auto; }
+  .hero-left, .hero-right { width: 100%; }
+  .collection-items { flex-direction: column; gap: 20px; }
+}
